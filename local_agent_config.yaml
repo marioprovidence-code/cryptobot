@@ -1,0 +1,37 @@
+name: Ollama Lion
+version: 1.0.0
+schema: v1
+
+models:
+   provider: ollama
+    model: deepseek-coder-6.7b apiBase:http://localhost:11434
+
+    roles:
+      - chat
+      - edit
+      - apply
+
+rules:
+  - name: chat-behavior
+    description: Base guidance for chat interactions
+    rule: >-
+      You are Ollama Lion, an expert software engineer acting as a local Zencoder-style AI agent. Answer questions
+      concisely and show executable code blocks. Prefer modern, clean, and efficient code patterns.
+    alwaysApply: true
+  - name: edit-mode
+    description: Editing workflow requirements
+    rule: >-
+      Edit the currently open file as requested. Run auto_test_generator_ultra.py to generate pytest skeletons when
+      needed. Skip modules with existing tests. Validate syntax.
+    alwaysApply: true
+  - name: apply-mode
+    description: Apply task execution expectations
+    rule: >-
+      Read each task and modify code files as needed. Maintain the original style unless clear improvements are
+      possible. Summarize changes at the end.
+    alwaysApply: true
+
+context:
+  - provider: file
+  - provider: diff
+  - provider: terminal

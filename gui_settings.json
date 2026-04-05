@@ -1,0 +1,20 @@
+{
+  "theme": "dark",
+  "symbol": "SOLUSDT",
+  "risk": {
+    "max_position_size": 100.0,
+    "max_drawdown": 0.02,
+    "trailing_stop": 0.01,
+    "profit_target": 0.03,
+    "max_trades_per_day": 10,
+    "cooldown_minutes": 5
+  },
+  "chart": {
+    "update_interval_ms": 1000,
+    "show_volume": true,
+    "indicators": [
+      "SMA_20",
+      "RSI_14"
+    ]
+  }
+}
